@@ -1,23 +1,24 @@
 """Self-Update Utility Functions"""
 
 
-import dateutil.parser
 import os
 import platform
 import re
+from pathlib import Path
+
+import dateutil.parser
+from packaging.version import parse as parse_version
+
+from config import FanslyConfig
+from textio import clear_terminal, print_info, print_update, print_warning
+from utils.web import get_release_info_from_github
+
+
 # import requests
 # import subprocess
 # import sys
-
 # import errors
-
-from pathlib import Path
-from pkg_resources._vendor.packaging.version import parse as parse_version
 # from shutil import unpack_archive
-
-from config import FanslyConfig
-from textio import clear_terminal, print_error, print_info, print_update, print_warning
-from utils.web import get_release_info_from_github
 
 
 def delete_deprecated_files() -> None:

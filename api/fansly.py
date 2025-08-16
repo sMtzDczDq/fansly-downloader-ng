@@ -6,13 +6,13 @@ import binascii
 import json
 import math
 import random
-import requests
 import ssl
-
 from datetime import datetime, timezone
-from requests import Response
 from typing import Any, Callable, Optional
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse
+
+import requests
+from requests import Response
 from websockets import client as ws_client
 
 from utils.web import get_flat_qs_dict, split_url
@@ -268,7 +268,7 @@ class FanslyApi(object):
 
     def get_group(self) -> Response:
         return self.get_with_ngsw(
-            url='https://apiv3.fansly.com/api/v1/group',
+            url='https://apiv3.fansly.com/api/v1/messaging/groups',
         )
 
 

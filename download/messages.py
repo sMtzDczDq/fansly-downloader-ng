@@ -2,16 +2,14 @@
 
 
 import random
-
 from time import sleep
 
+from config import FanslyConfig
+from textio import input_enter_continue, print_error, print_info, print_warning
 from .common import get_unique_media_ids, process_download_accessible_media
 from .downloadstate import DownloadState
 from .media import download_media_infos
 from .types import DownloadType
-
-from config import FanslyConfig
-from textio import input_enter_continue, print_error, print_info, print_warning
 
 
 def download_messages(config: FanslyConfig, state: DownloadState):
@@ -25,7 +23,7 @@ def download_messages(config: FanslyConfig, state: DownloadState):
         .get_group()
 
     if groups_response.status_code == 200:
-        groups_response = groups_response.json()['response']['groups']
+        groups_response = groups_response.json()['response']['aggregationData']['groups']
 
         # go through messages and check if we even have a chat history with the creator
         group_id = None
